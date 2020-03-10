@@ -1,0 +1,9 @@
+config.cfg
+.envrc
+tags
+downloads/
+uploads/
+test.py
+.env_file
+.vscode
+

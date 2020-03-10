@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FlaskDrive</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <section class="section">
+    <div class="container">
+        <h1 class="title">Flask Drive: S3 Flask Demo</h1>
+        <p class="subtitle">Welcome to this AWS S3 Demo</p>
+    </section>
+        <div class="container">
+          <h3>Upload your file here:</h3>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <article class="message is-info">
+              <div class="message-body">
+                    {% for message in messages %}
+                    {{ message }}<br/>
+                    {% endfor %}
+              </div>
+          </article>
+          {% endif %}
+          {% endwith %}
+
+          <form method="POST" action="/upload" enctype=multipart/form-data>
+            <input type=file name="files[]" multiple="true">
+            <input type=submit value=Upload>
+          </form>
+
+        </div>
+        <hr/>
+
+        <div class="container">
+          <h3>These are your uploaded files:</h3>
+          <p>Click on the filename to download it.</p>
+            <table class="table is-bordered is-striped is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead> 
+                <tbody>
+
+                    {% for item in contents %}
+                    <tr>
+                        {% if item.Key %}
+                        <td>
+                            <a href="/download/{{ item.Key }}"> {{ item.Key }} </a>
+                        </td>
+                        <td>
+                            <a href="/download/{{ item.Key }}"class="button is-primary is-rounded">Download&emsp;<i class="fas fa-save"></i></a>
+                            <a href="/delete/{{ item.Key }}"class="button is-danger is-rounded">Delete&emsp;<i class="fas fa-trash"></i></a>
+                        </td>
+                        {% else %}
+                        <td><h3>Bucket is empty</h3></td>
+                        <td><h3></h3></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+  </body>
+</html>

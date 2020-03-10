@@ -25,11 +25,11 @@ After pulling docker image, create a .env_file.
 
 It should contain the following
 
-S3_KEY=<YOUR S3_KEY>
+S3_KEY=`<YOUR S3_KEY>`
 
-S3_SECRET=<YOUR S3_SECRET>
+S3_SECRET=`<YOUR S3_SECRET>`
 
-BUCKET=<THE BUCKET NAME>
+BUCKET=`<THE BUCKET NAME>`
 
 You may also want to link a local volume to ensure that the docker image does not store images locally in its /app/uploads folder.
 

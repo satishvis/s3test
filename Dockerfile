@@ -13,3 +13,4 @@ EXPOSE 5000
 
 ENTRYPOINT ["./gstart.sh"]
 
+

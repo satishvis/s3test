@@ -31,7 +31,7 @@ S3_SECRET=`<YOUR S3_SECRET>`
 
 BUCKET=`<THE BUCKET NAME>`
 
-You may also want to link a local volume to ensure that the docker image does not store images locally in its /app/uploads folder.
+You may also want to link a local volume to ensure that the docker image does not store images in its /app/uploads folder.
 
 In order to pass the env variable mentioned in the above env file and mount the local volume you need to start the docker container with this following command or variations thereto:
 
